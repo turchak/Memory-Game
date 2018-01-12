@@ -1,24 +1,35 @@
+const card = {
+    container: document.querySelector('.container'),
+    template: `<div class="card">
+    <div class="card-back"></div>
+    <div class="card-front">
+      <div class="card-front-top">
+        <div class="card-front-top-number"></div>
+        <div class="card-front-top-suit">♠</div>
+      </div>
+      <div class="card-front-mid">♠</div>
+      <div class="card-front-bottom">
+        <div class="card-front-bottom-number"></div>
+        <div class="card-front-bottom-suit">♠</div>
+      </div>
+    </div>
+    </div>`,
+    startArr: ['2', '2', '3', '3', '4', '4', '5', '5', 'J', 'J', 'Q', 'Q', 'K', 'K', 'A', 'A'],
+};
+
+
 class MemoryPairGame {
-    constructor() {
-        this.container = document.querySelector('.container');
-        this.cartTemplate = `<div class="card">
-        <div class="card-back"></div>
-        <div class="card-front">
-          <div class="card-front-top">
-            <div class="card-front-top-number"></div>
-            <div class="card-front-top-suit">♠</div>
-          </div>
-          <div class="card-front-mid">♠</div>
-          <div class="card-front-bottom">
-            <div class="card-front-bottom-number"></div>
-            <div class="card-front-bottom-suit">♠</div>
-          </div>
-        </div>
-        </div>`;
-        this.startArr = ['2', '2', '3', '3', '4', '4', '5', '5', 'J', 'J', 'Q', 'Q', 'K', 'K', 'A', 'A'];
+    constructor(card) {
+        this.container = card.container;
+        this.cartTemplate = card.template;
+        this.startArr = card.startArr;
         this.checkArr = [];
         this.shuffleArr = this.shuffle(this.startArr);
         this.start = this.start(this.shuffleArr);
+        this.cards = document.querySelectorAll('.card');
+        this.cardsBack = document.querySelectorAll('.card-back');
+        this.openCard('click');
+        this.updateCard(this.cards);
     }
 
     shuffle(arr) {
@@ -30,7 +41,7 @@ class MemoryPairGame {
     }
 
     clear() {
-        cards.forEach(card => {
+        this.cards.forEach(card => {
             card.classList.remove('card-open');
         })
     }
@@ -41,7 +52,7 @@ class MemoryPairGame {
         }
     }
 
-    openCard(card) {
+    checkCard(card) {
         if (this.checkArr.length > 2) {
             this.clear();
             this.checkArr = [];
@@ -64,26 +75,27 @@ class MemoryPairGame {
             }
         }
     }
+
+    openCard(event) {
+        this.cardsBack.forEach((cardBack) => {
+            cardBack.addEventListener(event, () => {
+                if (!cardBack.parentNode.classList.contains('card-open')) {
+                    cardBack.parentNode.classList.add('card-open');
+                    this.checkArr.push(cardBack.parentNode.dataset.name);
+                }
+                this.checkCard(cardBack);
+            });
+        });
+
+    }
+    
+    updateCard(cards) {
+        cards.forEach((card, i) => {
+            cards[i].dataset.name = this.shuffleArr[i];
+            card.querySelector('.card-front-top-number').innerHTML = this.shuffleArr[i];
+            card.querySelector('.card-front-bottom-number').innerHTML = this.shuffleArr[i];
+        })
+    }
 }
 
-let game = new MemoryPairGame;
-let cards = document.querySelectorAll('.card');
-let cardBack = document.querySelectorAll('.card-back');
-
-cards.forEach((card, i) => {
-    cards[i].dataset.name = game.shuffleArr[i];
-    card.querySelector('.card-front-top-number').innerHTML = game.shuffleArr[i];
-    card.querySelector('.card-front-bottom-number').innerHTML = game.shuffleArr[i];
-});
-
-
-cardBack.forEach(card => {
-    card.addEventListener('click', () => {
-        if (!card.parentNode.classList.contains('card-open')) {
-            card.parentNode.classList.add('card-open');
-            game.checkArr.push(card.parentNode.dataset.name);
-        }
-        game.openCard(card);
-    });
-});
-
+let game = new MemoryPairGame(card);

@@ -1,19 +1,21 @@
 const card = {
     container: document.querySelector('.container'),
-    template: `<div class="card">
-    <div class="card-back"></div>
-    <div class="card-front">
-      <div class="card-front-top">
-        <div class="card-front-top-number"></div>
-        <div class="card-front-top-suit">♠</div>
-      </div>
-      <div class="card-front-mid">♠</div>
-      <div class="card-front-bottom">
-        <div class="card-front-bottom-number"></div>
-        <div class="card-front-bottom-suit">♠</div>
-      </div>
-    </div>
-    </div>`,
+    template: `
+        <div class="card">
+            <div class="card-back"></div>
+            <div class="card-front">
+            <div class="card-front-top">
+                <div class="card-front-top-number"></div>
+                <div class="card-front-top-suit">♠</div>
+            </div>
+            <div class="card-front-mid">♠</div>
+            <div class="card-front-bottom">
+                <div class="card-front-bottom-number"></div>
+                <div class="card-front-bottom-suit">♠</div>
+            </div>
+            </div>
+        </div>
+    `,
     startArr: ['2', '2', '3', '3', '4', '4', '5', '5', 'J', 'J', 'Q', 'Q', 'K', 'K', 'A', 'A'],
 };
 
@@ -47,9 +49,9 @@ class MemoryPairGame {
     }
 
     start(arr) {
-        for (let i = 1; i <= arr.length; i++) {
+        arr.forEach(item => {
             this.container.innerHTML += this.cartTemplate;
-        }
+        })
     }
 
     checkCard(card) {
@@ -98,4 +100,4 @@ class MemoryPairGame {
     }
 }
 
-let game = new MemoryPairGame(card);
+const game = new MemoryPairGame(card);

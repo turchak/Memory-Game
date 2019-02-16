@@ -19,6 +19,10 @@
     "url": "https://github.com/turchak/memory-pair-game/issues"
   },
   "homepage": "https://github.com/turchak/memory-pair-game#readme",
+  "scripts": {
+    "dev": "parcel <your entry file>",
+    "build": "parcel build <your entry file>"
+  },
   "devDependencies": {
     "node-sass": "^4.11.0",
     "sass": "^1.17.0"

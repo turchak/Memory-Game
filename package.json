@@ -1,0 +1,26 @@
+{
+  "name": "memory-pair-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turchak/memory-pair-game.git"
+  },
+  "keywords": [
+    "memory-pair-game"
+  ],
+  "author": "turchak sergey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/turchak/memory-pair-game/issues"
+  },
+  "homepage": "https://github.com/turchak/memory-pair-game#readme",
+  "devDependencies": {
+    "node-sass": "^4.11.0",
+    "sass": "^1.17.0"
+  }
+}

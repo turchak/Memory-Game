@@ -1,3 +1,5 @@
+import './main';
+
 const card = {
     container: document.querySelector('.container'),
     template: `

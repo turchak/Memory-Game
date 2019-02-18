@@ -1,4 +1,5 @@
-import './main';
+import './src/assets/sass/main';
+import './src/assets/js/card';
 
 const card = {
     container: document.querySelector('.container'),

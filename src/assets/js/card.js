@@ -10,7 +10,7 @@ class Card {
     }
   
     get opened() {
-      // returns actual opened
+      return this.isOpen;
     }
   
     toggle() {

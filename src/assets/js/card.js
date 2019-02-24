@@ -3,14 +3,20 @@ class Card {
         this.host = host;
         this.name = name;
         this.isOpen = false;
+        this.handleClick = this.handleClick(this);
+        this.host.addEventListener('click', this.handleClick);
     }
   
     get element() {
-      this.host.innerHTML = this.render();
+      this.host.innerHTML += this.render();
     }
   
     get opened() {
       return this.isOpen;
+    }
+
+    handleClick(ev) {
+        this.toggle();
     }
   
     toggle() {

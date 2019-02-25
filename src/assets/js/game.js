@@ -12,8 +12,8 @@ class Game {
 
     init() {
         this.host.addEventListener('click', ev => {
-            console.log(ev.currentTarget)
-            this.cards[ev.target.dataset.index].toggle()
+            // console.log(ev.currentTarget)
+            // this.cards[ev.target.dataset.index].toggle()
             // this.cards[]
             // this.buffer.push(ev.target.dataset.name)
             // console.dir(ev.target)

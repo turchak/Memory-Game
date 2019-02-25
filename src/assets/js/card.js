@@ -6,12 +6,17 @@ class Card {
         this.isOpen = false;
         this.index = index;
         this.element;
-
+        this.handleClick = this.handleClick.bind(this);
+        this.host.addEventListener('click', this.handleClick);
     }
   
     // get element() {
     //   this.host.innerHTML = this.render();
     // }
+
+    handleClick(ev) {
+        this.toggle();
+    }
   
     get opened() {
       return this.isOpen;

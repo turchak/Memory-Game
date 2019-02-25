@@ -9,9 +9,9 @@ class Card {
 
     }
   
-    get element() {
-      this.host.innerHTML = this.render();
-    }
+    // get element() {
+    //   this.host.innerHTML = this.render();
+    // }
   
     get opened() {
       return this.isOpen;
@@ -19,7 +19,12 @@ class Card {
   
     toggle() {
       this.isOpen = !this.isOpen;
-      this.element;
+      if (this.isOpen) {
+          this.host.classList.add('card-open');
+          return;
+      }
+      console.log(this.isOpen);
+      this.host.classList.remove('card-open');
     }
   
     render() {

@@ -12,6 +12,7 @@ class Game {
 
     init() {
         this.host.addEventListener('click', ev => {
+            console.log(ev.currentTarget)
             this.cards[ev.target.dataset.index].toggle()
             // this.cards[]
             // this.buffer.push(ev.target.dataset.name)
@@ -20,12 +21,10 @@ class Game {
         })
         this.set.forEach((el,index) => { 
             this.cards.push(new Card(el, index))
-            console.log(this.cards)
             const cards  = this.cards.reduce((acc, val) => {
                 acc.push(val.render());
                 return acc;
             },[])
-            console.log(...cards);
             this.host.append(...cards);
         })
     };

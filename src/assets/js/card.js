@@ -9,17 +9,13 @@ class Card {
         this.handleClick = this.handleClick.bind(this);
         this.host.addEventListener('click', this.handleClick);
     }
-  
-    // get element() {
-    //   this.host.innerHTML = this.render();
-    // }
 
     handleClick(ev) {
         this.toggle();
     }
-  
-    get opened() {
-      return this.isOpen;
+    
+    close() {
+        this.host.hidden.true
     }
   
     toggle() {
@@ -28,7 +24,6 @@ class Card {
           this.host.classList.add('card-open');
           return;
       }
-      console.log(this.isOpen);
       this.host.classList.remove('card-open');
     }
   

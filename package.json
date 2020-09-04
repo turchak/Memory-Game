@@ -25,7 +25,7 @@
     "watch": "parcel watch index.html"
   },
   "devDependencies": {
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "sass": "^1.17.0"
   }
 }

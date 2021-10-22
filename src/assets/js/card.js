@@ -1,25 +1,36 @@
 class Card {
-    constructor(name) {
+    constructor(name, index) {
+        this.host = document.createElement('div');
+        this.host.classList.add('card')
         this.name = name;
+        this.isOpen = false;
+        this.index = index;
+        this.element;
+        this.handleClick = this.handleClick.bind(this);
+        this.host.addEventListener('click', this.handleClick);
     }
-  
-    get element() {
-      // return rendered element
+
+    handleClick(ev) {
+        this.toggle();
     }
-  
-    get opened() {
-      // returns actual opened
+    
+    close() {
+        this.host.hidden.true
     }
   
     toggle() {
-      // changes current card state: opend to closed and vice versa
+      this.isOpen = !this.isOpen;
+      if (this.isOpen) {
+          this.host.classList.add('card-open');
+          return;
+      }
+      this.host.classList.remove('card-open');
     }
   
     render() {
-        return `
-        <div class="card">
-            <div class="card-back"></div>
-            <div class="card-front">
+        const string =  `
+            <div class="card-back" data-name=${this.name} data-index=${this.index}></div>
+            <div class="card-front" data-name=${this.name}>
             <div class="card-front-top">
                 <div class="card-front-top-number">${this.name}</div>
                 <div class="card-front-top-suit">♠</div>
@@ -30,7 +41,10 @@ class Card {
                 <div class="card-front-bottom-suit">♠</div>
             </div>
             </div>
-        </div>
         `
+        this.host.innerHTML = string;
+        return this.host;
     }
 }
+
+export default Card;
